@@ -5,3 +5,9 @@ Desktop.ini
 # Editor directories
 .idea/
 .vscode/
+
+# Node / backend
+node_modules/
+.env
+sessions/
+uploads/

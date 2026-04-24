@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de" class="admin-page">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Bärenstarke Kita-Freunde</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Administrationsbereich für die Website des Fördervereins.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="admin-body">
+<div class="admin-shell">
+    <header class="admin-header">
+        <div>
+            <p class="admin-kicker">Administrationsbereich</p>
+            <h1>Website-Inhalte bearbeiten</h1>
+            <p class="admin-intro">
+                Geschützter Bereich für Texte, Bilder und sonstige Inhalte der Website.
+            </p>
+        </div>
+        <a href="index.html" class="btn btn-outline">Zur Website</a>
+    </header>
+
+    <section class="admin-card" id="login-panel">
+        <h2>Login</h2>
+        <p class="admin-help">
+            Benutzername: <strong>vorstand</strong>
+        </p>
+        <form id="login-form" class="admin-form">
+            <label class="admin-field">
+                <span>Benutzername</span>
+                <input type="text" name="username" autocomplete="username" required>
+            </label>
+            <label class="admin-field">
+                <span>Passwort</span>
+                <input type="password" name="password" autocomplete="current-password" required>
+            </label>
+            <button type="submit" class="btn btn-primary">Einloggen</button>
+            <p id="login-message" class="admin-message" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <section class="admin-card admin-editor hidden" id="editor-panel">
+        <div class="admin-editor-header">
+            <div>
+                <h2>Inhalte bearbeiten</h2>
+                <p class="admin-help">
+                    Änderungen werden serverseitig gespeichert und sind danach für alle Besucher sichtbar.
+                </p>
+            </div>
+            <div class="admin-actions">
+                <button type="button" class="btn btn-outline" id="logout-button">Ausloggen</button>
+            </div>
+        </div>
+
+        <form id="content-form" class="admin-form-grid"></form>
+
+        <div class="admin-submit-row">
+            <button type="submit" form="content-form" class="btn btn-primary">Änderungen speichern</button>
+            <p id="save-message" class="admin-message" aria-live="polite"></p>
+        </div>
+    </section>
+</div>
+
+<script src="assets/js/content-admin.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

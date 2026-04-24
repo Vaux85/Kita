@@ -205,6 +205,11 @@ body {
     color: var(--color-muted);
 }
 
+.highlight-text {
+    font-weight: 700;
+    color: var(--color-text) !important;
+}
+
 /* Allgemeine Abschnitt-Optik innerhalb der weißen Karte */
 .page-section {
     margin-top: 2.5rem;
@@ -435,6 +440,14 @@ body {
     font-size: 0.9rem;
     color: #777;
     background: #ffffff;
+}
+
+.home-hero-image-placeholder img,
+.home-card-image-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 0.8rem;
 }
 
 /* Teaser-Bereich */

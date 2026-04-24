@@ -1,0 +1,139 @@
+.admin-page {
+    height: auto;
+    overflow: auto;
+}
+
+.admin-body {
+    overflow: auto;
+    min-height: 100vh;
+    height: auto;
+}
+
+.admin-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.admin-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #ff7a00;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.admin-header h1 {
+    margin: 0 0 0.5rem;
+}
+
+.admin-intro,
+.admin-help {
+    color: #555;
+    margin: 0;
+}
+
+.admin-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.admin-editor-header,
+.admin-submit-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.admin-form,
+.admin-form-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.admin-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.admin-field {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.admin-field span,
+.admin-field label {
+    font-weight: 700;
+    color: #222;
+}
+
+.admin-field input,
+.admin-field textarea {
+    width: 100%;
+    border: 1px solid #d6d6d6;
+    border-radius: 10px;
+    padding: 0.8rem 0.9rem;
+    font: inherit;
+}
+
+.admin-field textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.admin-field input[type="file"] {
+    padding: 0.5rem 0;
+    border: 0;
+}
+
+.admin-preview {
+    max-width: 100%;
+    max-height: 180px;
+    border-radius: 12px;
+    border: 1px solid #e8e8e8;
+    object-fit: contain;
+    background: #fff;
+    padding: 0.5rem;
+}
+
+.admin-message {
+    min-height: 1.2rem;
+    margin: 0;
+    color: #d35400;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .admin-header,
+    .admin-editor-header,
+    .admin-submit-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-form-grid {
+        grid-template-columns: 1fr;
+    }
+}

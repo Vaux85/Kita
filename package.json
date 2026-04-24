@@ -1,0 +1,29 @@
+{
+  "name": "kita",
+  "version": "1.0.0",
+  "description": "Statisches Website-Projekt fuer den Ordner `Kita`.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "hash-password": "node scripts/create-password-hash.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vaux85/Kita.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vaux85/Kita/issues"
+  },
+  "homepage": "https://github.com/Vaux85/Kita#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.4.0",
+    "express-session": "^1.19.0",
+    "multer": "^2.1.1",
+    "session-file-store": "^1.5.0"
+  }
+}
