@@ -71,7 +71,7 @@
 }
 
 .admin-form-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
 }
 
 .admin-field {
@@ -131,9 +131,5 @@
     .admin-submit-row {
         flex-direction: column;
         align-items: stretch;
-    }
-
-    .admin-form-grid {
-        grid-template-columns: 1fr;
     }
 }
