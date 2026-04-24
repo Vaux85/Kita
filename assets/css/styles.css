@@ -210,6 +210,10 @@ body {
     color: var(--color-text) !important;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /* Allgemeine Abschnitt-Optik innerhalb der weißen Karte */
 .page-section {
     margin-top: 2.5rem;
