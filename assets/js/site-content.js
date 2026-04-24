@@ -41,9 +41,11 @@
     function toggleImageVisibility(node, isVisible) {
         var wrapper = node.closest(".event-image-wrap, .home-card-image-placeholder, .home-hero-image-placeholder");
         node.classList.toggle("hidden", !isVisible);
+        node.style.display = isVisible ? "" : "none";
 
         if (wrapper) {
             wrapper.classList.toggle("hidden", !isVisible);
+            wrapper.style.display = isVisible ? "" : "none";
         }
     }
 
@@ -60,6 +62,7 @@
             if (field.type === "image") {
                 if (!value) {
                     node.removeAttribute("src");
+                    node.alt = "";
                     toggleImageVisibility(node, false);
                     return;
                 }
