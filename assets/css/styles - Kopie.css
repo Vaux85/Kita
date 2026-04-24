@@ -1,0 +1,487 @@
+/* ---------- Design-Basis: Farben, Schrift, Layout ---------- */
+:root {
+    --color-background: #ffffff;
+    --color-page-bg: #fff6c3;
+    --color-text: #222222;
+    --color-muted: #6a6a6a;
+
+    --color-accent: #f48c06;          /* Orange für Header-Titel */
+    --color-nav-bg: #f48c06;          /* Orange für das Menüband links */
+    --color-nav-text: #000000;        /* Schwarz für Text im Menü */
+    --color-nav-hover-bg: #ffffff;
+    --color-nav-hover-text: #f48c06;
+
+    --color-card-bg: #ffffff;
+    --color-footer-border: #e3e3e6;
+
+    --font-base: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --layout-width-max: 1200px;
+    --side-nav-width: 260px;
+
+    --radius-small: 6px;
+    --radius-medium: 12px;
+    --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* ---------- Reset / Basics ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* weiches Scrollen für Anker-Links */
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--color-text);
+    font-family: var(--font-base);
+    line-height: 1.6;
+    font-size: 16px;
+    height: 100%;
+
+    /* Hintergrund mit Bild */
+    background-color: var(--color-page-bg); /* Fallback */
+    background-image: url("../../Background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+/* ---------- Seitenrahmen ---------- */
+
+.page-shell {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+    background-color: var(--color-background);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-inner {
+    max-width: var(--layout-width-max);
+    margin: 0 auto;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* Bären-Gruppen links/rechts */
+.header-logos {
+    display: flex;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+    align-items: center;
+}
+
+.header-logo {
+    width: 70px;
+    height: auto;
+    display: block;
+}
+
+/* Titel in der Mitte */
+.site-title {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-align: center;
+    flex: 1 1 auto;
+}
+
+/* ---------- Layout (Navigation + Content) ---------- */
+
+.layout {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1.5rem 2rem;
+    min-height: 0;
+}
+
+.layout > nav,
+.layout > main {
+    max-width: var(--layout-width-max);
+}
+
+/* ---------- Navigation links ---------- */
+
+.side-nav {
+    width: var(--side-nav-width);
+    background-color: var(--color-nav-bg);
+    color: var(--color-nav-text);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem 1.25rem;
+    margin-right: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    align-self: stretch;
+}
+
+.side-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-item:last-child {
+    margin-bottom: 0;
+}
+
+.nav-item a {
+    display: block;
+    padding: 0.55rem 0.9rem;
+    text-decoration: none;
+    color: var(--color-nav-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: var(--radius-small);
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+/* Hover/Fokus: weiß hinterlegt */
+.nav-item a:hover,
+.nav-item a:focus {
+    background-color: var(--color-nav-hover-bg);
+    color: var(--color-nav-hover-text);
+    transform: translateX(2px);
+}
+
+/* ---------- Inhaltsbereich ---------- */
+
+.page-content {
+    flex: 1;
+    max-width: calc(var(--layout-width-max) - var(--side-nav-width));
+    display: flex;
+    align-items: stretch;
+    min-height: 0;
+}
+
+/* „Karte“ für den Seiteninhalt (Onepager-Bereich) */
+.content-card {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-medium);
+    padding: 2rem 2.25rem;
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Typografie im Inhalt */
+
+.content-card h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.content-card p {
+    margin-top: 0;
+    margin-bottom: 0.9rem;
+    color: var(--color-muted);
+}
+
+/* Allgemeine Abschnitt-Optik innerhalb der weißen Karte */
+.page-section {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+    border-top: 1px solid var(--color-footer-border);
+    padding: 0.9rem 1.5rem 1.1rem;
+    background-color: var(--color-background);
+}
+
+.footer-inner {
+    max-width: var(--layout-width-max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+.instagram-link:hover,
+.instagram-link:focus {
+    color: var(--color-text);
+}
+
+/* Icon Styling */
+.instagram-svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 960px) {
+    .layout {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.5rem 1rem 2rem;
+    }
+
+    .side-nav {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+        display: flex;
+        overflow-x: auto;
+        padding: 0.8rem 0.5rem;
+        border-radius: var(--radius-medium);
+        align-self: auto;
+    }
+
+    .side-nav ul {
+        display: flex;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .nav-item {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .nav-item a {
+        white-space: nowrap;
+    }
+
+    .page-content {
+        max-width: 100%;
+    }
+
+    .content-card {
+        padding: 1.5rem 1.3rem;
+        height: auto;
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .header-logos {
+        display: none; /* auf Handy nur Titel */
+    }
+
+    .site-title {
+        font-size: 1.5rem;
+    }
+
+    .footer-inner {
+        justify-content: center;
+    }
+}
+
+/* ---------- Startseite / Hero- und Teaser-Bereich ---------- */
+
+.home-hero {
+    padding: 3rem 2rem;
+    background: #fff8f0;
+    border-radius: var(--radius-medium);
+    margin-bottom: 2rem;
+}
+
+.home-hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.home-hero-text {
+    flex: 1 1 280px;
+}
+
+.home-hero-kicker {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #ff7a00;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.home-hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
+
+.home-hero-description {
+    color: #555;
+    margin-bottom: 1.2rem;
+}
+
+.home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.home-hero-note {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+.home-hero-image-placeholder {
+    flex: 1 1 260px;
+    min-height: 200px;
+    border-radius: 1rem;
+    border: 2px dashed #ffd3a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: #777;
+    background: #ffffff;
+}
+
+.home-hero,
+.page-section {
+    scroll-margin-top: 40px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: #ff7a00;
+    color: #ffffff;
+}
+
+.btn-outline {
+    background: #ffffff;
+    color: #ff7a00;
+    border-color: #ff7a00;
+}
+
+/* Teaser-Bereich */
+
+.home-teasers {
+    padding: 0 0 0.5rem;
+    background: #ffffff;
+}
+
+.home-teasers-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.home-teasers-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.home-teasers-subtitle {
+    color: #666;
+    margin-bottom: 1.5rem;
+    max-width: 650px;
+}
+
+.home-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.home-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid #e6e6e6;
+    padding: 1.25rem;
+}
+
+.home-card-image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.8rem;
+    border: 2px dashed #ffd3a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 0.75rem;
+    background: #fffdf8;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.home-card-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.home-card-text {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Responsive für Startseite */
+@media (max-width: 960px) {
+    .home-hero {
+        padding: 2rem 1.2rem;
+    }
+
+    .home-hero-inner {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 800px) {
+    .home-card-grid {
+        grid-template-columns: 1fr;
+    }
+}

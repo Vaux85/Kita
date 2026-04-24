@@ -1,0 +1,603 @@
+/* ---------- Design-Basis: Farben, Schrift, Layout ---------- */
+:root {
+    --color-background: #ffffff;
+    --color-page-bg: #fff6c3;
+    --color-text: #222222;
+    --color-muted: #6a6a6a;
+
+    --color-accent: #f48c06;          /* Orange für Header-Titel */
+    --color-nav-bg: #f48c06;          /* Orange für das Menüband links */
+    --color-nav-text: #000000;        /* Schwarz für Text im Menü */
+    --color-nav-hover-bg: #ffffff;
+    --color-nav-hover-text: #f48c06;
+
+    --color-card-bg: #ffffff;
+    --color-footer-border: #e3e3e6;
+
+    --font-base: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --layout-width-max: 1200px;
+    --side-nav-width: 260px;
+
+    --radius-small: 6px;
+    --radius-medium: 12px;
+    --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* ---------- Reset / Basics ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* weiches Scrollen für Anker-Links */
+    height: 100%;
+    overflow: hidden;        /* kein globales Scrollen – nur die Karte */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--color-text);
+    font-family: var(--font-base);
+    line-height: 1.6;
+    font-size: 16px;
+    height: 100%;
+    overflow: hidden;        /* kein globales Scrollen */
+
+    /* Hintergrund mit Bild */
+    background-color: var(--color-page-bg); /* Fallback */
+    background-image: url("../../Background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+/* ---------- Seitenrahmen ---------- */
+
+.page-shell {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+    background-color: var(--color-background);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-inner {
+    max-width: var(--layout-width-max);
+    margin: 0 auto;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+/* Bären-Gruppen links/rechts */
+.header-logos {
+    display: flex;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+    align-items: center;
+}
+
+.header-logo {
+    width: 70px;
+    height: auto;
+    display: block;
+}
+
+/* Titel in der Mitte */
+.site-title {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-align: center;
+    flex: 1 1 auto;
+}
+
+/* ---------- Layout (Navigation + Content) ---------- */
+
+.layout {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1.5rem 2rem;
+    min-height: 0; /* wichtig, damit Kinder scrollen dürfen */
+}
+
+.layout > nav,
+.layout > main {
+    max-width: var(--layout-width-max);
+}
+
+/* ---------- Navigation links ---------- */
+
+.side-nav {
+    width: var(--side-nav-width);
+    background-color: var(--color-nav-bg);
+    color: var(--color-nav-text);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem 1.25rem;
+    margin-right: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    align-self: stretch;
+}
+
+.side-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-item:last-child {
+    margin-bottom: 0;
+}
+
+.nav-item a {
+    display: block;
+    padding: 0.55rem 0.9rem;
+    text-decoration: none;
+    color: var(--color-nav-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: var(--radius-small);
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+/* Hover/Fokus: weiß hinterlegt */
+.nav-item a:hover,
+.nav-item a:focus {
+    background-color: var(--color-nav-hover-bg);
+    color: var(--color-nav-hover-text);
+    transform: translateX(2px);
+}
+
+/* ---------- Inhaltsbereich ---------- */
+
+.page-content {
+    flex: 1;
+    max-width: calc(var(--layout-width-max) - var(--side-nav-width));
+    display: flex;
+    align-items: stretch;
+    min-height: 0;
+}
+
+/* „Karte“ für den Seiteninhalt (Onepager-Bereich) */
+.content-card {
+    background-color: var(--color-card-bg);
+    border-radius: var(--radius-medium);
+    padding: 2rem 2.25rem 4.5rem; /* unten Platz für Footer */
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;        /* HIER scrollt es: innerer Scrollbalken */
+}
+
+/* Typografie im Inhalt */
+
+.content-card h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.content-card p {
+    margin-top: 0;
+    margin-bottom: 0.9rem;
+    color: var(--color-muted);
+}
+
+/* Allgemeine Abschnitt-Optik innerhalb der weißen Karte */
+.page-section {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* ---------- Termine: Bild mit Hover-Zoom (Overlay) ---------- */
+.event-image-wrap{
+    position: relative;
+    display: inline-block;
+}
+
+.event-image{
+    display: block;
+    width: 220px;      /* normale Anzeigegröße */
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-small);
+    cursor: zoom-in;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Hover: groß anzeigen (overlay), ohne Layout zu verschieben */
+.event-image-wrap:hover .event-image,
+.event-image-wrap:focus-within .event-image{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(92vw, 1000px);  /* quasi "100%" im Viewport, aber begrenzt */
+    max-height: 92vh;
+    height: auto;
+    z-index: 1000;
+    cursor: zoom-out;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* dunkler Hintergrund beim Hover */
+.event-image-wrap::after{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+    z-index: 999;
+}
+
+.event-image-wrap:hover::after,
+.event-image-wrap:focus-within::after{
+    opacity: 1;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+    border-top: 1px solid var(--color-footer-border);
+    padding: 0.6rem 1.5rem 0.7rem;
+    background-color: var(--color-background);
+
+    /* fix am unteren Bildschirmrand */
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+}
+
+.footer-inner {
+    max-width: var(--layout-width-max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Links links, Instagram rechts */
+    align-items: center;
+}
+
+/* neue Linkgruppe links im Footer */
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--color-muted);
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    color: var(--color-text);
+}
+
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+.instagram-link:hover,
+.instagram-link:focus {
+    color: var(--color-text);
+}
+
+/* Icon Styling */
+.instagram-svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+}
+
+/* ---------- Startseite / Hero- und Teaser-Bereich ---------- */
+
+.home-hero {
+    padding: 3rem 2rem;
+    background: #fff8f0;
+    border-radius: var(--radius-medium);
+    margin-bottom: 2rem;
+}
+
+.home-hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.home-hero-text {
+    flex: 1 1 280px;
+}
+
+.home-hero-kicker {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #ff7a00;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.home-hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
+
+.home-hero-description {
+    color: #555;
+    margin-bottom: 1.2rem;
+}
+
+/* ---------- Buttons im Hero ---------- */
+
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.08s ease;
+}
+
+.btn-primary {
+    background-color: #f48c06;   /* voll orange */
+    border-color: #f48c06;
+    color: #ffffff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #ff9b22;
+    border-color: #ff9b22;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border-color: #f48c06;       /* nur Rahmen orange */
+    color: #f48c06;
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+    background-color: #fff3df;
+    border-color: #f48c06;
+    color: #f48c06;
+    transform: translateY(-1px);
+}
+
+.home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.home-hero-note {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+.home-hero-image-placeholder {
+    flex: 1 1 260px;
+    min-height: 200px;
+    border-radius: 1rem;
+    border: 2px dashed #ffd3a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: #777;
+    background: #ffffff;
+}
+
+/* Teaser-Bereich */
+
+.home-teasers {
+    padding: 0 0 0.5rem;
+    background: #ffffff;
+}
+
+.home-teasers-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.home-teasers-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.home-teasers-subtitle {
+    color: #666;
+    margin-bottom: 1.5rem;
+    max-width: 650px;
+}
+
+.home-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.home-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid #e6e6e6;
+    padding: 1.25rem;
+}
+
+.home-card-image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.8rem;
+    border: 2px dashed #ffd3a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 0.75rem;
+    background: #fffdf8;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.home-card-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.home-card-text {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* ---------- Responsive: Tablets & Smartphones ---------- */
+
+@media (max-width: 960px) {
+
+    /* Parallax auf Mobilgeräten abschalten */
+    body {
+        background-attachment: scroll;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    /* Bären auf Handy ausblenden */
+    .header-logos {
+        display: none;
+    }
+
+    .site-title {
+        font-size: 1.6rem;
+    }
+
+    .layout {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.5rem 1rem 2rem;
+    }
+
+    /* Menü als horizontale Leiste */
+    .side-nav {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+        display: block;
+        padding: 0.6rem 0.5rem;
+        border-radius: var(--radius-medium);
+        align-self: auto;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .side-nav ul {
+        display: flex;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .nav-item {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .nav-item a {
+        white-space: nowrap;
+        padding: 0.5rem 0.9rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+    }
+
+    .page-content {
+        max-width: 100%;
+        display: flex;
+        flex: 1;
+        min-height: 0;
+    }
+
+    .content-card {
+        padding: 1.5rem 1.3rem 4.5rem;
+    }
+
+    .home-hero {
+        padding: 2rem 1.2rem;
+    }
+
+    .home-hero-inner {
+        flex-direction: column;
+    }
+
+    .footer-inner {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* Noch kleiner: max 600px – Kacheln einspaltig */
+@media (max-width: 600px) {
+
+    .home-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-title {
+        font-size: 1.4rem;
+    }
+}
