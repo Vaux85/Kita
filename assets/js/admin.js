@@ -39,7 +39,7 @@
             textInput.type = "text";
             textInput.name = field.key;
             textInput.value = value || "";
-            textInput.placeholder = "Pfad aus Upload oder vorhandene Bilddatei";
+            textInput.placeholder = "Pfad aus Upload oder leer lassen, um das Bild auszublenden";
             wrapper.appendChild(textInput);
 
             var fileInput = document.createElement("input");

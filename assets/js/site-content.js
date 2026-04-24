@@ -38,6 +38,15 @@
         node.innerHTML = escapeHtml(value).replace(/\n/g, "<br>");
     }
 
+    function toggleImageVisibility(node, isVisible) {
+        var wrapper = node.closest(".event-image-wrap, .home-card-image-placeholder, .home-hero-image-placeholder");
+        node.classList.toggle("hidden", !isVisible);
+
+        if (wrapper) {
+            wrapper.classList.toggle("hidden", !isVisible);
+        }
+    }
+
     function applyContent(content) {
         Object.keys(fieldMap).forEach(function (key) {
             var field = fieldMap[key];
@@ -49,7 +58,14 @@
             }
 
             if (field.type === "image") {
+                if (!value) {
+                    node.removeAttribute("src");
+                    toggleImageVisibility(node, false);
+                    return;
+                }
+
                 node.src = value;
+                toggleImageVisibility(node, true);
                 return;
             }
 

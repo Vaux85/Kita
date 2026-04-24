@@ -151,6 +151,11 @@ function sanitizeContent(input) {
         const trimmed = value.trim();
 
         if (fieldType === "image") {
+            if (!trimmed) {
+                sanitized[key] = "";
+                return;
+            }
+
             if (!isSafeImagePath(trimmed)) {
                 throw new Error(`Ungültiger Bildpfad für ${key}.`);
             }
